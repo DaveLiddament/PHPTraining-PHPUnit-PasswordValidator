@@ -32,6 +32,7 @@ class PasswordValidatorTest extends \PHPUnit_Framework_TestCase
         $this->passwordStrengthCalculator
             ->expects($this->once())
             ->method("getPasswordStrength")
+            ->with($this->equalTo('MyPassword1'))
             ->willReturn(3);
 
         $this->assertTrue($this->passwordValidator->isValid("MyPassword1"));
@@ -61,6 +62,7 @@ class PasswordValidatorTest extends \PHPUnit_Framework_TestCase
         $this->passwordStrengthCalculator
             ->expects($this->once())
             ->method("getPasswordStrength")
+            ->with($this->equalTo('MyPassword1'))
             ->willReturn(2);
 
         $this->assertFalse($this->passwordValidator->isValid("MyPassword1"));
