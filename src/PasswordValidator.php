@@ -7,6 +7,21 @@ class PasswordValidator
 {
 
     /**
+     * @var PasswordStrengthCalculatorInterface
+     */
+    private $passwordStrengthCalculator;
+
+    /**
+     * PasswordValidator constructor.
+     * @param PasswordStrengthCalculatorInterface $passwordStrengthCalculator
+     */
+    public function __construct(PasswordStrengthCalculatorInterface $passwordStrengthCalculator)
+    {
+        $this->passwordStrengthCalculator = $passwordStrengthCalculator;
+    }
+
+
+    /**
     * Returns true if the password meets following rules:
     *
     * - min 8 characters
@@ -40,7 +55,20 @@ class PasswordValidator
             return false;
         }
 
+        if ($this->getPasswordStrength($password) < 3) {
+            return false;
+        }
+
         return true;
     }
 
+    
+    private function getPasswordStrength($password)
+    {
+        $passwordStrength = $this->passwordStrengthCalculator->getPasswordStrength($password);
+        if (!is_int($passwordStrength)) {
+            throw new \Exception("Invalid password strength of [$passwordStrength] for password [$password]");
+        }
+        return $passwordStrength;
+    }
 }
