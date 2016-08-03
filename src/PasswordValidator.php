@@ -39,6 +39,10 @@ class PasswordValidator
             return false;
         }
 
+        if ($this->getPasswordStrength($password) < 3) {
+            return false;
+        }
+        
         if (strlen($password) < 8) {
             return false;
         }
@@ -55,9 +59,7 @@ class PasswordValidator
             return false;
         }
 
-        if ($this->getPasswordStrength($password) < 3) {
-            return false;
-        }
+    
 
         return true;
     }

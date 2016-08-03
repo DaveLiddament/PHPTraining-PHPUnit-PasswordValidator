@@ -53,6 +53,10 @@ class PasswordValidatorTest extends \PHPUnit_Framework_TestCase
      */
     public function testInvalidPassword($invalidPassword)
     {
+        $this->passwordStrengthCalculator
+            ->method("getPasswordStrength")
+            ->willReturn(3);
+
         $this->assertFalse($this->passwordValidator->isValid($invalidPassword));
     }
 
