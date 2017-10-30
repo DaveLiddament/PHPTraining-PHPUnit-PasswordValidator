@@ -5,7 +5,7 @@ The purpose of this project is to introduce developers to mocking using PHPUnit.
 
 ## Setup
 
-Here are the steps you need to go through to get the tests running. If you are having trouble then refer to the project [Sample PHPUnit Setup](https://github.com/DaveLiddament/PHPTraining-PHPUnit-SamplePHPUnitSetup)
+Here are the steps you need to go through to get the tests running. If you are having trouble then refer to the project [Sample PHPUnit Setup](https://github.com/bristol-php-training/phpunit-sample-setup)
 
 ### Requirements
 
